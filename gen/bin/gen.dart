@@ -3,12 +3,22 @@ import 'package:gen/commit_source.dart';
 
 import 'package:gen/gen.dart';
 
-Future<String> main(List<String> arguments) async {
+void main(List<String> arguments) async {
+  if (arguments.first.trim() == 'build') {
+    print(1);
+    return;
+  }
   final tag = await kGetLatestTagFromMain.run();
   final commitSrc = CommitSource(tag: tag);
   final commits = await commitSrc.getCommits();
-  final calculator = VersionCalculator(tag: tag, commits: commits);
-  return await calculator.calculate();
+  if (arguments.first.trim() == 'sem-ver') {
+    final calculator = VersionCalculator(tag: tag, commits: commits);
+    print(await calculator.calculate());
+  } else if (arguments.first.trim() == 'release-note') {
+    print(commits.join("\n"));
+  } else {
+    print('only sem-ver, build, release-note are valid parameters');
+  }
 }
 
 /// 1. version

@@ -2,7 +2,8 @@ part of 'command.dart';
 
 const kGetBranchName = Command(cmd: 'git rev-parse --abbrev-ref HEAD');
 
-const kGetLatestTagFromMain = Command(cmd: 'git describe --tags --abbrev=0');
+const kGetLatestTagFromMain =
+    Command(cmd: 'git describe --tags --abbrev=0 origin/main');
 
 Command getCommitAfter(String start) {
   return Command(cmd: 'git log --oneline ${start.trim()}..HEAD');
