@@ -1,2 +1,1 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+ dart run C:\Dev\ael\sem-ver-dart\gen\bin\gen.dart
