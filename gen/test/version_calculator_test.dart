@@ -1,4 +1,4 @@
-import 'package:gen/gen.dart';
+import 'package:gen/version_calculator.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
