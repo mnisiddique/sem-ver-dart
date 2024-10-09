@@ -1,10 +1,11 @@
 import 'package:gen/command/command.dart';
 import 'package:gen/commit_source.dart';
 
-import 'package:gen/gen.dart';
+import 'package:gen/version_calculator.dart';
+import 'package:gen/release_note/release_note_gen.dart';
 
 void main(List<String> arguments) async {
-  if (arguments.first.trim() == 'build') {
+  if (arguments.first.trim().contains("build_number")) {
     print(1);
     return;
   }
@@ -15,7 +16,8 @@ void main(List<String> arguments) async {
     final calculator = VersionCalculator(tag: tag, commits: commits);
     print(await calculator.calculate());
   } else if (arguments.first.trim() == 'release-note') {
-    print(commits.join("\n"));
+    final releaseNote = ReleaseNoteGen(commits: commits);
+    print(releaseNote.genReleaseNote());
   } else {
     print('only sem-ver, build, release-note are valid parameters');
   }
