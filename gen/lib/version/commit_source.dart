@@ -1,4 +1,4 @@
-import 'command/command.dart';
+import '../command/command.dart';
 
 final kCommitHashRegex = RegExp(r'\b[0-9a-f]{7,40}\b');
 

@@ -1,7 +1,7 @@
 import 'package:gen/command/command.dart';
-import 'package:gen/commit_source.dart';
+import 'package:gen/version/commit_source.dart';
 
-import 'package:gen/version_calculator.dart';
+import 'package:gen/version/version_calculator.dart';
 import 'package:gen/release_note/release_note_gen.dart';
 
 void main(List<String> arguments) async {

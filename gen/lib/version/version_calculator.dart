@@ -1,5 +1,5 @@
-import 'package:gen/commit_source.dart';
-import 'package:gen/version.dart';
+import 'package:gen/version/commit_source.dart';
+import 'package:gen/version/version.dart';
 
 class VersionCalculator {
   final String tag;

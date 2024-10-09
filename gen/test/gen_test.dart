@@ -1,4 +1,4 @@
-import 'package:gen/version.dart';
+import 'package:gen/version/version.dart';
 import 'package:test/test.dart';
 
 void main() {

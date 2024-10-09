@@ -1,4 +1,4 @@
-import 'package:gen/commit_source.dart';
+import 'package:gen/version/commit_source.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
