@@ -1,3 +1,5 @@
+import 'package:gen/build_number/build_number.dart';
+import 'package:gen/build_number/project_settings.dart';
 import 'package:gen/command/command.dart';
 import 'package:gen/version/commit_source.dart';
 
@@ -6,7 +8,11 @@ import 'package:gen/release_note/release_note_gen.dart';
 
 void main(List<String> arguments) async {
   if (arguments.first.trim().contains("build_number")) {
-    print(1);
+    final buildNumber = BuildNumber(
+      settings: await ProjectSettings.read(),
+      params: arguments,
+    );
+    print(await buildNumber.get());
     return;
   }
   final tag = await kGetLatestTagFromMain.run();
@@ -22,7 +28,3 @@ void main(List<String> arguments) async {
     print('only sem-ver, build, release-note are valid parameters');
   }
 }
-
-/// 1. version
-/// 2. release note
-/// 3. build number
