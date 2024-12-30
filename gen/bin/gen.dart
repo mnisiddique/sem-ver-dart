@@ -18,7 +18,6 @@ void main(List<String> arguments) async {
   final tag = await latestTag;
   final commitSrc = CommitSource(tag: tag);
   final commits = await commitSrc.getCommits();
-  print(commits);
   if (arguments.first.trim() == 'sem-ver') {
     final calculator = VersionCalculator(tag: tag, commits: commits);
     print(await calculator.calculate());
