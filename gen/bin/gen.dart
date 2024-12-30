@@ -15,9 +15,10 @@ void main(List<String> arguments) async {
     print(await buildNumber.get());
     return;
   }
-  final tag = await kGetLatestTagFromMain.run();
+  final tag = await latestTag;
   final commitSrc = CommitSource(tag: tag);
   final commits = await commitSrc.getCommits();
+  print(commits);
   if (arguments.first.trim() == 'sem-ver') {
     final calculator = VersionCalculator(tag: tag, commits: commits);
     print(await calculator.calculate());
@@ -26,5 +27,13 @@ void main(List<String> arguments) async {
     print(releaseNote.genReleaseNote());
   } else {
     print('only sem-ver, build, release-note are valid parameters');
+  }
+}
+
+Future<String?> get latestTag async {
+  try {
+    return await kGetLatestTagFromMain.run();
+  } catch (e) {
+    return null;
   }
 }

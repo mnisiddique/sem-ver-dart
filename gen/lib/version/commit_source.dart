@@ -3,9 +3,9 @@ import '../command/command.dart';
 final kCommitHashRegex = RegExp(r'\b[0-9a-f]{7,40}\b');
 
 class CommitSource {
-  final String tag;
+  final String? tag;
 
-  CommitSource({required this.tag});
+  CommitSource({this.tag});
   List<String> splitIntoList(String commitOutput) {
     return commitOutput.split('\n');
   }
@@ -18,8 +18,8 @@ class CommitSource {
 
   Future<List<String>> getCommits() async {
     final branchName = await kGetBranchName.run();
-    if (branchName.trim().contains('main')) {
-      return refineCommits(splitIntoList(await getCommitAfter(tag).run()));
+    if (branchName.trim().contains('main') && tag != null) {
+      return refineCommits(splitIntoList(await getCommitAfter(tag!).run()));
     }
     List<String> list =
         splitIntoList(await getCommitFromBranch(branchName).run());
