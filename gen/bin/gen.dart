@@ -8,7 +8,7 @@ import 'package:gen/release_note/release_note_gen.dart';
 
 void main(List<String> arguments) async {
   if (arguments.first.trim().contains("build_number")) {
-    final buildNumber = BuildNumber(
+    final buildNumber = FirebaseBuildNumber(
       settings: await ProjectSettings.read(),
       params: arguments,
     );

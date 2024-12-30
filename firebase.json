@@ -1,0 +1,30 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "umr-life-ead04",
+                    "appId": "1:721228497770:android:5ae0bc77afa9497c4e5b13",
+                    "fileOutput": "android/app/dev/google-services.json"
+                }
+            },
+            "ios": {
+                "default": {
+                    "projectId": "umr-life-ead04",
+                    "appId": "1:721228497770:ios:9a7e59a89e7b5b694e5b13",
+                    "uploadDebugSymbols": false,
+                    "fileOutput": "ios/Runner/dev/GoogleService-Info.plist"
+                }
+            },
+            "dart": {
+                "lib/core/app/environment/dev/firebase_options_dev.dart": {
+                    "projectId": "umr-life-ead04",
+                    "configurations": {
+                        "android": "1:721228497770:android:5ae0bc77afa9497c4e5b13",
+                        "ios": "1:721228497770:ios:9a7e59a89e7b5b694e5b13"
+                    }
+                }
+            }
+        }
+    }
+}
