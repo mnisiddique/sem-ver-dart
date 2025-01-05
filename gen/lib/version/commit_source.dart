@@ -4,6 +4,9 @@ final kCommitHashRegex = RegExp(r'\b[0-9a-f]{7,40}\b');
 
 class CommitSource {
   final String? tag;
+  late String _branchName;
+
+  String get branchName => _branchName;
 
   CommitSource({this.tag});
   List<String> splitIntoList(String commitOutput) {
@@ -17,12 +20,12 @@ class CommitSource {
   }
 
   Future<List<String>> getCommits() async {
-    final branchName = await kGetBranchName.run();
-    if (branchName.trim().contains('main') && tag != null) {
+    _branchName = await kGetBranchName.run();
+    if (_branchName.trim().contains('main') && tag != null) {
       return refineCommits(splitIntoList(await getCommitAfter(tag!).run()));
     }
     List<String> list =
-        splitIntoList(await getCommitFromBranch(branchName).run());
+        splitIntoList(await getCommitFromBranch(_branchName).run());
     list = list.where((item) => item.trim().isNotEmpty).toList();
     final hash =
         kCommitHashRegex.allMatches(list[list.length - 1]).first.group(0);
