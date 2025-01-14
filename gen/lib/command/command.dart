@@ -14,6 +14,11 @@ class Command {
     }
     throw result.stderr;
   }
+
+  @override
+  String toString() {
+    return _cmd;
+  }
 }
 
 abstract class ProcessRunner {

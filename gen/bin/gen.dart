@@ -1,3 +1,4 @@
+import 'package:gen/cleaning/cleaner.dart';
 import 'package:gen/command/command.dart';
 import 'package:gen/version/commit_source.dart';
 
@@ -14,6 +15,8 @@ void main(List<String> arguments) async {
   } else if (arguments.first.trim() == 'release-note') {
     final releaseNote = ReleaseNoteGen(commits: commits);
     print(releaseNote.genReleaseNote(commitSrc.branchName));
+  } else if (arguments.first.trim() == 'clean') {
+    await cleaner.clean(arguments);
   } else {
     print('only sem-ver, build, release-note are valid parameters');
   }
