@@ -12,7 +12,6 @@ class Cleaner {
       paths = paths.map((item) => '"$item"').toList();
       cmd = Command(cmd: "rmdir /s /q ${paths.join(' ')}");
     }
-    // print(cmd.toString());
     cmd.run();
   }
 }
