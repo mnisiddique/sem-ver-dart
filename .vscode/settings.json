@@ -1,0 +1,20 @@
+{
+    "actionButtons": {
+        "commands": [
+            {
+                "name": "Mac",
+                "color": "white",
+                "terminalName": "zsh",
+                "command": "dart compile exe bin/gen.dart -o gen",
+                "singleInstance": true
+            },
+            {
+                "name": "Windows",
+                "color": "white",
+                "terminalName": "zsh",
+                "command": "dart compile exe bin/gen.dart -o gen.exe",
+                "singleInstance": true
+            },
+        ]
+    }
+}
