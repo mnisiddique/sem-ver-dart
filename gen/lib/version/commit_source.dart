@@ -23,6 +23,8 @@ class CommitSource {
     _branchName = await kGetBranchName.run();
     if (_branchName.trim().contains('main') && tag != null) {
       return refineCommits(splitIntoList(await getCommitAfter(tag!).run()));
+    } else if(_branchName.trim().contains('main') && tag == null){
+      return refineCommits(splitIntoList(await getAllCommit().run()));
     }
     List<String> list =
         splitIntoList(await getCommitFromBranch(_branchName).run());

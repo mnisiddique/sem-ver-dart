@@ -12,3 +12,7 @@ Command getCommitAfter(String start) {
 Command getCommitFromBranch(String branchName) {
   return Command(cmd: 'git reflog show $branchName');
 }
+
+Command getAllCommit() {
+  return Command(cmd: 'git log --oneline');
+}
