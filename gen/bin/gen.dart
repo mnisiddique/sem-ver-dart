@@ -54,7 +54,9 @@ Future<String?> latestTag(String? prefix) async {
     final cmd = prefix == null
         ? kGetLatestTagFromMain
         : getLatestTagByMatchingPrefix("'$prefix*'");
-    return await cmd.run();
+    String? tag = await cmd.run();
+    tag = tag.trim();
+    return tag.isEmpty ? null : tag;
   } catch (e) {
     return null;
   }
