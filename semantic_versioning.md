@@ -39,3 +39,59 @@ By following these principles, you can effectively manage the semantic versionin
 
 ### What i understand
 1. None of the number (major.minro.patch) incremented by number of features or fixes. They always incremented by one based on the feature/fix added no matter how many. per release they'll be incremented by 1.
+
+A **breaking change** refers to any modification in a system, software, or API that is **not backward-compatible**, meaning it disrupts or breaks existing functionality or usage patterns. When a breaking change is introduced, it often requires users, developers, or clients interacting with the system to update their code or behavior to accommodate the change. 
+
+### Key Aspects of Breaking Changes
+1. **Backward Compatibility is Lost**  
+   Older versions of the system, code, or clients are no longer able to function as expected without modification.
+
+2. **Requires Updates on the Client Side**  
+   Users or developers must adapt their usage, such as updating API calls, rewriting parts of their code, or reconfiguring dependencies.
+
+3. **Impact Scope**  
+   Breaking changes can affect various components, including APIs, libraries, user interfaces, or workflows.
+
+---
+
+### Examples of Breaking Changes
+
+#### 1. **API Example**  
+   - **Before the Change:** An API endpoint accepts a parameter `age` as an integer.  
+     ```json
+     POST /users
+     { "name": "John", "age": 30 }
+     ```
+   - **Breaking Change:** The parameter `age` is now renamed to `years_old`.  
+     ```json
+     POST /users
+     { "name": "John", "years_old": 30 }
+     ```
+   - **Impact:** Existing clients using `age` will fail unless they update their code.
+
+#### 2. **Library/Framework Example**  
+   - **Before the Change:** A function `get_user()` returns a user object.  
+   - **Breaking Change:** `get_user()` now requires an argument, `id`, to fetch a user.  
+     ```python
+     # Old behavior
+     user = get_user()
+
+     # New behavior (breaking change)
+     user = get_user(id=123)
+     ```
+   - **Impact:** Code using the old signature will break until updated.
+
+#### 3. **UI/UX Example**  
+   - **Before the Change:** A "Submit" button is always visible on a form.  
+   - **Breaking Change:** The button only becomes visible after filling all fields.  
+   - **Impact:** Users who relied on the button's visibility may experience confusion or workflow disruption.
+
+---
+
+### Strategies to Mitigate Breaking Changes
+1. **Versioning**: Introduce breaking changes in a new version (e.g., API v2) while maintaining backward compatibility in the older version.
+2. **Deprecation Notices**: Warn users ahead of time about upcoming breaking changes and provide a transition period.
+3. **Documentation**: Clearly document what has changed, why it changed, and how users can update their usage.
+4. **Feature Flags or Phased Rollouts**: Allow users to opt into new changes before enforcing them.
+
+Breaking changes should be implemented with caution, as they can lead to user dissatisfaction or churn if not communicated and managed effectively.
